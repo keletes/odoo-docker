@@ -10,11 +10,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./${{ github.ref_name }}e
 
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build ./19e --file Dockerfile --tag keletes/odoo:${{ github.ref_name }}
+      run: docker build . --file Dockerfile --tag keletes/odoo:${{ github.ref_name }}
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
