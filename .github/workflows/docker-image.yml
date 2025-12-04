@@ -26,5 +26,6 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
       with:
+        context: "{{defaultContext}}:${{ github.ref_name }}e"
         push: ${{ github.event_name != 'pull_request' }}
         tags: keletes/odoo:${{ github.ref_name }} , keletes/odoo:latest
