@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag keletes/freecad:${{ github.ref_name }}
+      run: docker build ./19e --file Dockerfile --tag keletes/odoo:${{ github.ref_name }}
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
@@ -24,4 +24,4 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: ${{ github.event_name != 'pull_request' }}
-        tags: keletes/freecad:${{ github.ref_name }} , keletes/freecad:latest
+        tags: keletes/odoo:${{ github.ref_name }} , keletes/odoo:latest
